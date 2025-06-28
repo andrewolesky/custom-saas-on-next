@@ -1,4 +1,5 @@
 import ButtonLogin from "@/components/ButtonLogin";
+import FAQListItem from "@/components/FAQListItem";
 
 export default function Home() {
   const isLoggedIn = true;
@@ -11,8 +12,12 @@ export default function Home() {
         <div className="max-w-3xl mx-auto flex justify-between items-center px-8 py-2">
           <div className="font-bold">CustomSaaS</div>
           <div className="space-x-4 max-md:hidden">
-            <a className="link link-hover">Pricing</a>
-            <a className="link link-hover">FAQ</a>
+            <a className="link link-hover" href="#pricing">
+              Pricing
+            </a>
+            <a className="link link-hover" href="#faq">
+              FAQ
+            </a>
           </div>
           <div>
             <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
@@ -32,7 +37,7 @@ export default function Home() {
         <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
       </section>
       {/* PRICING */}
-      <section className="bg-base-200">
+      <section className="bg-base-200" id="pricing">
         <div className="px-8 py-32 max-w-3xl mx-auto">
           <p className="text-sm uppercase font-medium text-center text-primary mb-4">
             Pricing
@@ -48,70 +53,66 @@ export default function Home() {
               </div>
             </div>
             <ul className="space-y-2">
-              <li className="flex gap-2 items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="text-green-600 size-4"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Collect customer feedback
-              </li>
-              <li className="flex gap-2 items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="text-green-600 size-4"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Unlimited boards
-              </li>
-              <li className="flex gap-2 items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="text-green-600 size-4"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Admin dashboard
-              </li>
-              <li className="flex gap-2 items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="text-green-600 size-4"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                24/7 support
-              </li>
+              {[
+                "Collect customer feedback",
+                "Unlimited boards",
+                "Admin dashboard",
+                "24/7 support",
+              ].map((priceItem) => (
+                <li className="flex gap-2 items-center" key={priceItem}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    className="text-green-600 size-4"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  {priceItem}
+                </li>
+              ))}
             </ul>
 
-            <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
+            <ButtonLogin
+              isLoggedIn={isLoggedIn}
+              name={name}
+              extraStyle="w-full"
+            />
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-base-200" id="faq">
+        <div className="py-32 px-8 max-w-3xl mx-auto">
+          <p className="text-sm uppercase font-medium text-center text-primary mb-4">
+            FAQ
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <ul className="max-w-lg mx-auto">
+            {[
+              {
+                question: "What do I get exactly?",
+                answer: "A great application.",
+              },
+              {
+                question: "Can I get a refund?",
+                answer: "During first 30 days since purchase.",
+              },
+              {
+                question: "I have another question",
+                answer: "Send us an email.",
+              },
+            ].map((qa) => (
+              <FAQListItem key={qa.question} qa={qa} />
+            ))}
+          </ul>
         </div>
       </section>
     </main>
